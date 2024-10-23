@@ -1,74 +1,112 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 
 class Challenges
-
 {
     public static void Main(string[] args)
     {
-        Console.WriteLine("Welcome to my coding challenge program. There will be a variety of functions you will have to choose from. Please pick one");
-        Console.WriteLine("Today we are going to use the adder called SUM. Please input 2 numbers for us to add. \n");
+        bool continueProgram = true; // Declare the variable to control program loop
 
-        var number1 = Console.ReadLine();
-        int number1int = int.Parse(number1);
+        while (continueProgram) // Start a loop to keep the program running
+        {
+            Console.WriteLine("\nWelcome to my coding challenge program.");
+            Console.WriteLine("Please select a challenge from the list:");
+            Console.WriteLine("1. Add two numbers (SUM)");
+            Console.WriteLine("2. Convert minutes to seconds");
+            Console.WriteLine("3. Add one to a number");
+            Console.WriteLine("4. Calculate age in days");
+            Console.WriteLine("5. Calculate the area of a triangle");
+            Console.WriteLine("6. Determine if a number is less than or equal to zero");
+            Console.WriteLine("7. Convert Voltage to Power");
+            Console.WriteLine("8. Determine if the Sum of 2 Numbers is less than zero");
 
-        Console.WriteLine("Awesome! Please input a 2nd number");
+            string choice = Console.ReadLine();
 
-        var number2 = Console.ReadLine();
-        int number2int = int.Parse(number2);
+            switch (choice)
+            {
+                case "1":
+                    Console.WriteLine("You chose SUM. Please input two numbers.");
+                    Console.Write("Enter first number: ");
+                    int number1 = int.Parse(Console.ReadLine());
+                    Console.Write("Enter second number: ");
+                    int number2 = int.Parse(Console.ReadLine());
+                    Console.WriteLine($"The sum of {number1} and {number2} is: {Sum(number1, number2)}");
+                    break;
+                case "2":
+                    Console.WriteLine("You chose to convert minutes to seconds.");
+                    Console.Write("Enter the number of minutes: ");
+                    int minutes = int.Parse(Console.ReadLine());
+                    Console.WriteLine($"{minutes} minutes is equal to {Convert(minutes)} seconds.");
+                    break;
+                case "3":
+                    Console.WriteLine("You chose to add one to a number.");
+                    Console.Write("Enter a number: ");
+                    int number = int.Parse(Console.ReadLine());
+                    Console.WriteLine($"Adding one to {number} gives: {PlusOne(number)}");
+                    break;
+                case "4":
+                    Console.WriteLine("You chose to calculate age in days.");
+                    Console.Write("Enter your age in years: ");
+                    int age = int.Parse(Console.ReadLine());
+                    Console.WriteLine($"{age} years is approximately {CalcAge(age)} days.");
+                    break;
+                case "5":
+                    Console.WriteLine("You chose to calculate the area of a triangle.");
+                    Console.Write("Enter the base of the triangle: ");
+                    float baseLength = float.Parse(Console.ReadLine());
+                    Console.Write("Enter the height of the triangle: ");
+                    int height = int.Parse(Console.ReadLine());
+                    Console.WriteLine($"The area of the triangle is: {TriArea(baseLength, height)}");
+                    break;
+                case "6":
+                    Console.WriteLine("You chose to determine if a number is less than or equal to zero.");
+                    Console.Write("Enter a number: ");
+                    int inputNumber = int.Parse(Console.ReadLine());
+                    Console.WriteLine($"{inputNumber} is less than or equal to zero: {LessThanOrEqualToZero(inputNumber)}");
+                    break;
+                case "7":
 
-        Console.WriteLine("The sum of the bnumber: " + number1 + " and the number: " + number2 + " is equal to: + " + Sum(number1int, number2int));
-        Sum(number1int, number2int);
+                    Console.WriteLine("Lets try converting voltage and current to power. \nGive me two numbers to convert from voltage and current to power");
+                    Console.Write("Enter the Voltage: ");
+                    int number3 = int.Parse(Console.ReadLine());
+                    Console.Write("Enter Current: ");
+                    int number4 = int.Parse(Console.ReadLine());
+                    Console.WriteLine($"Voltage and Current converted to power is: {Voltage(number3, number4)}");
+                    break;
+                case "8":
 
-        //Convert Minutes to Seconmds
-        Console.WriteLine("Lets try converting minutes to seconds \nGive me a number to converyt from minutes to seconds");
-        var number3 = Console.ReadLine();
-        int number3int = int.Parse(number3);
+                    Console.WriteLine("Determine if the sum of a number is less than and hundred.");
+                    Console.Write("Enter first number: ");
+                    int num1 = int.Parse(Console.ReadLine());
+                    Console.Write("Enter second number: ");
+                    int num2 = int.Parse(Console.ReadLine());
+                    Console.WriteLine($"{num1} and {num2} sum is less than 100: {LessThanHundred(num1, num2)}");
+                    break;
+                default:
+                    Console.WriteLine("Invalid option. Please select a valid challenge from the list.");
+                    break;
 
-        Console.WriteLine(number3 + " Minutes converted to seconds is: " + Convert(number3int));
 
-        //Add one to any number
-        Console.WriteLine("Lets try adding 1 to any number \nGive me a number to add the number 1 to");
-        var number4 = Console.ReadLine();
-        int number4int = int.Parse(number4);
-        Console.WriteLine(number4 + " One added to the number selected is: " + PlusOne(number4int));
-
-        //Calculate any age in days
-        Console.WriteLine("Lets try calculating your age in days \nGive me a number to calculate into days");
-        var number5 = Console.ReadLine();
-        int number5int = int.Parse(number5);
-
-        Console.WriteLine(number5 + " Converted into days is: " + CalcAge(number5int));
-
-        //Calculate any age in days
-        Console.WriteLine("Lets try calculating the area of a triangle \nGive me the base of the triangle");
-        var number6 = Console.ReadLine();
-        int number6int = int.Parse(number6);
-
-        Console.WriteLine("Awesome! Please input the height");
-
-        var number7 = Console.ReadLine();
-        int number7int = int.Parse(number7);
-
-        Console.WriteLine("The area of the triangle with the length: " + number6 + " and the height: " + number7 + " is equal to: " + triArea(number6int, number7int));
-        Sum(number1int, number2int);
-        //Determine if a number is less than or equal to zero
-        Console.WriteLine("Lets try Determining is a value is equal to or less than zero\nGive me a number to determine if it is equal to or less than zero");
-        var number8 = Console.ReadLine();
-        int number8int = int.Parse(number8);
-        Console.WriteLine(number8 + " is equal to or less than zero: " + lessThanOrEqualToZero(number8int));
-
+            }
+            // Ask if the user wants to try another challenge
+            Console.WriteLine("\nWould you like to try another challenge? (y/n)");
+            string continueChoice = Console.ReadLine().ToLower();
+            if (continueChoice != "y")
+            {
+                Console.WriteLine("Exiting the program. Goodbye!");
+                continueProgram = false; // Ends the loop if user says 'n'
+            }
+        }
     }
 
-
-
+    // Challenge methods
     public static int Sum(int number1, int number2)
     {
         return number1 + number2;
     }
-    public static int Convert(int number)
+
+    public static int Convert(int minutes)
     {
-        return number * 60;
+        return minutes * 60;
     }
 
     public static int PlusOne(int number)
@@ -76,17 +114,29 @@ class Challenges
         return number + 1;
     }
 
-    public static int CalcAge(int number)
+    public static int CalcAge(int years)
     {
-        return number * 365;
-    }
-    public static float triArea(float number6, int number7)
-    {
-        return (number6 * number7) / 2 ;
+        return years * 365;
     }
 
-    public static bool lessThanOrEqualToZero(int number)
+    public static float TriArea(float baseLength, int height)
     {
-        return (number <= 0) ? true : false;
+        return (baseLength * height) / 2;
     }
+
+    public static bool LessThanOrEqualToZero(int number)
+    {
+        return number <= 0;
+    }
+    public static int Voltage (int number3, int number4)
+    {
+        return number3 * number4;
+    }
+    public static bool LessThanHundred(int num1, int num2)
+    {
+        return num1 + num2 < 100;
+    }
+
 }
+
+
